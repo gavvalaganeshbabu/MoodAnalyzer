@@ -7,17 +7,34 @@ namespace MoodAnalyser
     internal class MoodAnalyzer
     {
         public string message;
-        public MoodAnalyzer(string message) {
-            this.message = message;
-        }
-        public string moodAnalyzer(string s) {
-            if (message.ToLower().Contains("sad")){
-                return "SAD";
+        public MoodAnalyzer() { }
+       
+        public string moodAnalyzer(string message) {
+            try {
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.Empty_Message, "Mood should not be Empty");
+                }
+                if (message.ToLower().Contains("sad"))
+                {
+                    return "SAD";
+                }
+                else if (message.ToLower().Contains("happy"))
+                {
+                    return "HAPPY";
+                }
+                else {
+                    return "Invalid Message";
+                    
+                }
             }
-            else {
-                return "HAPPY";
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyzerException(MoodAnalyzerException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
-            
+
+
+
         }
     }
 }
