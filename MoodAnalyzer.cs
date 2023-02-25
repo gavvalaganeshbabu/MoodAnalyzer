@@ -7,6 +7,9 @@ namespace MoodAnalyser
     internal class MoodAnalyzer
     {
         public string message;
+        public MoodAnalyzer() { 
+        
+        }
         public MoodAnalyzer(string message) {
             this.message = message;
         }
